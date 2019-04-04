@@ -6,7 +6,7 @@ public class playermov : MonoBehaviour
     public float speed;
 
     void Start()
-    {
+    {        
         pos = transform.position; 
     }
 
@@ -14,11 +14,10 @@ public class playermov : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            pos.z = pos.z +speed+Time.deltaTime;
+            pos.z = pos.z +speed +Time.deltaTime;
             transform.position = pos;
+            speed = speed + Time.deltaTime / 700;
         }
     }
-
-
 
 }

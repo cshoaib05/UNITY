@@ -10,12 +10,13 @@ public class ObsController : MonoBehaviour
     public GameObject player;
     public  List<GameObject> objPrefab;
     private int key = 0;
+
     public Dictionary<int, Queue<GameObject>> objDict;
 
 
     void Start()
     {
-        objposition = new Vector3(0f, 0f, 5f);
+        objposition = new Vector3(0f, 0f, 10f);
 
         objDict = new Dictionary<int, Queue<GameObject>>();
         foreach(GameObject obj in objPrefab)
@@ -23,9 +24,9 @@ public class ObsController : MonoBehaviour
             key++;
             Queue<GameObject> objpool = new Queue<GameObject>();
 
-            for(int i =0; i<100; i++)
+            for(int i =0; i<10; i++)
             {
-                GameObject go = Instantiate(obj);
+                GameObject go = Instantiate(obj,obj.transform.position,obj.transform.rotation);
                 go.SetActive(false);
                 objpool.Enqueue(go);
             }
@@ -35,13 +36,14 @@ public class ObsController : MonoBehaviour
 
     public void SpawnObs()
     {
-            int rankey = Random.Range(1, 8);
-            GameObject go = objDict[rankey].Dequeue();
-            go.SetActive(true);
-            go.transform.position = go.transform.position + objposition;
-            objposition = objposition + objposition;
-            objDict[rankey].Enqueue(go);         
+        Vector3 temppos;
+        int rankey = Random.Range(1, 8);
+        GameObject go = objDict[rankey].Dequeue();
+        go.SetActive(true);
+        temppos = go.transform.position;
+        temppos.z = objposition.z;
+        go.transform.position = temppos;
+        objposition = objposition + new Vector3(0f, 0f, 10f);
+        objDict[rankey].Enqueue(go);
     }
-
-
 }
