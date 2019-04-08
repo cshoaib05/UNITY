@@ -16,8 +16,6 @@ public class spwanner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("ads");
-
         if(other.gameObject.CompareTag("obstacles"))
         {
             obsController.SpawnObs();

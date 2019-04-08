@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Sprites;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Animationcontroller : MonoBehaviour
@@ -8,61 +10,73 @@ public class Animationcontroller : MonoBehaviour
     public GameObject iconswhite;
     public GameObject mainbutton;
     public GameObject[] panels;
+    public Image[] iconsimage;
+    private Color tempcolor;
 
-    
     public void Playbutton()
      {
-        mainbutton.SetActive(false);    
+        print(iconsimage.Length);
+        mainbutton.SetActive(false);
         iconswhite.SetActive(true);
-        iconanim.Play("whiteicon");
+        iconanim.Play("IconAnim");
+        showimagewhite(0);
         panels[0].SetActive(true);
+        
     }
-
+    
     public void Profilebutton()
      {
-        mainbutton.SetActive(false);    
+        mainbutton.SetActive(false);
         iconswhite.SetActive(true);
-        iconanim.Play("whiteicon");
+        iconanim.Play("IconAnim");
+        showimagewhite(1);
         panels[1].SetActive(true);
     }
 
 
     public void Settbutton()
      {
-        mainbutton.SetActive(false);    
+        mainbutton.SetActive(false);
         iconswhite.SetActive(true);
-        iconanim.Play("whiteicon");
+        iconanim.Play("IconAnim");
+        showimagewhite(2);
         panels[2].SetActive(true);
     }
 
     public void playicon()
     {
-        endis(0);
+        Panelshow(0);
+        showimagewhite(0);
+
     }
 
     public void profileicon()
     {
-        endis(1);
+        Panelshow(1);
+        showimagewhite(1);
     }
 
     public void settingicon()
     {
-        endis(2);
+        Panelshow(2);
+        showimagewhite(2);
     }
 
     public void  exiticon()
     {
-
+        showimagewhite(3);
+        showimagewhite(3);
     }
 
 
-    private void endis(int index)
+    private void Panelshow(int index)
     {
         for (int i = 0; i < panels.Length; i++)
         {
             if (i == index)
-            {
+            { 
                 panels[i].SetActive(true);
+
             }
             else
             {
@@ -71,5 +85,24 @@ public class Animationcontroller : MonoBehaviour
         }
     }
 
+    public void showimagewhite(int index1)
+    {
+        for (int i = 0; i < iconsimage.Length; i++)
+        {
+            if (i == index1)
+            {
+                tempcolor = iconsimage[i].color;
+                tempcolor.a = 1f;
+                iconsimage[i].color = tempcolor;
+
+            }
+            else
+            {
+                tempcolor = iconsimage[i].color;
+                tempcolor.a = 0.5f;
+                iconsimage[i].color = tempcolor;
+            }
+        }
+    }
 
 }
