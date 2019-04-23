@@ -43,6 +43,15 @@ public class Animationcontroller : MonoBehaviour
         panels[2].SetActive(true);
     }
 
+    public void exitbutton()
+    {
+        mainbutton.SetActive(false);
+        iconswhite.SetActive(true);
+        iconanim.Play("IconAnim");
+        showimagewhite(3);
+        panels[3].SetActive(true);
+    }
+
     public void playicon()
     {
         Panelshow(0);
@@ -64,7 +73,7 @@ public class Animationcontroller : MonoBehaviour
 
     public void  exiticon()
     {
-        showimagewhite(3);
+        Panelshow(3);
         showimagewhite(3);
     }
 
