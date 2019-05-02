@@ -7,6 +7,7 @@ public class obscollider : MonoBehaviour
     public GameObject player;
     public GameObject scorepanel;
     private Renderer playerrender;
+    public GameObject sphere;
     public TrailRenderer trailRenderer;
     public static bool isalive;
 
@@ -25,6 +26,7 @@ public class obscollider : MonoBehaviour
             outeffect.Play();
             playerrender.enabled = false;
             trailRenderer.enabled = false;
+            sphere.SetActive(false);
             isalive = false;
             StartCoroutine(waitingmethod());
         }

@@ -24,10 +24,15 @@ public class Score : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space ) && Time.frameCount%7 == 0 && obscollider.isalive)
         {
-            scoretext.text = score++.ToString();
-            scorepaneltext.text = score.ToString();
-
+            score++;
         }
 
+        if ((Input.touchCount > 0) && Time.frameCount%7 == 0 && obscollider.isalive)
+        {
+            score++;
+        }
+
+        scoretext.text = score.ToString();
+        scorepaneltext.text = score.ToString();
     }
 }
