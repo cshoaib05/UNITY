@@ -8,7 +8,8 @@ public class Nearmiss : MonoBehaviour
     {
         if (other.gameObject.CompareTag("obstacles"))
         {
-            print("near miss");
+            print("Near Miss");
+            Score.inst.score = Score.inst.score + 10;
         }
     }
 }

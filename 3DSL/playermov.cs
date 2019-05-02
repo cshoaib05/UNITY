@@ -12,7 +12,7 @@ public class playermov : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space) && obscollider.isalive)
         {
             pos.z = pos.z +speed +Time.deltaTime;
             transform.position = pos;

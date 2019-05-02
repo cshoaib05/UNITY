@@ -114,4 +114,10 @@ public class Animationcontroller : MonoBehaviour
         }
     }
 
+    public void cancelexit()
+    {
+        Panelshow(4);
+        iconswhite.SetActive(false);
+    }
+
 }
