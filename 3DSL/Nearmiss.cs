@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Nearmiss : MonoBehaviour
 {
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("obstacles"))
         {
-            print("Near Miss");
+            TextAnimeController.animeInst.AnimePlay(0);
+
             Score.inst.score = Score.inst.score + 10;
         }
     }

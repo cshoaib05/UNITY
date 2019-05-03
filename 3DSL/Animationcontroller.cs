@@ -13,6 +13,13 @@ public class Animationcontroller : MonoBehaviour
     public Image[] iconsimage;
     private Color tempcolor;
 
+
+    private void Start()
+    {
+        Application.targetFrameRate = 30;
+    }
+
+
     public void Playbutton()
      {
         print(iconsimage.Length);
