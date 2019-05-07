@@ -37,6 +37,7 @@ public class obscollider : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         scorepanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
 }

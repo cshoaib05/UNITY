@@ -6,6 +6,7 @@ public class Score : MonoBehaviour
     public static Score inst;
     
     public TextMeshProUGUI scoretext;
+
     public TextMeshProUGUI scorepaneltext;
     public int score;
 
@@ -22,12 +23,12 @@ public class Score : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space ) && Time.frameCount%7 == 0 && obscollider.isalive)
+        if (Input.GetKey(KeyCode.Space ) && Time.frameCount%15 == 0 && obscollider.isalive)
         {
             score++;
         }
 
-        if ((Input.touchCount > 0) && Time.frameCount%7 == 0 && obscollider.isalive)
+        if ((Input.touchCount > 0) && Time.frameCount%15 == 0 && obscollider.isalive)
         {
             score++;
         }

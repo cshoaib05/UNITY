@@ -13,14 +13,16 @@ public class playermov : MonoBehaviour
         timetrack = 0f;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        print(speed);
+
         if (Input.touchCount>0 && obscollider.isalive)
         {
             Touch touch = Input.GetTouch(0);
-                pos.z = pos.z+speed;
-                transform.position = pos;
+            pos.z = Mathf.Lerp(pos.z, pos.z + speed + 0.1f, t);
+            t += Mathf.Clamp01(0.05f);
+            //pos.z = pos.z+speed;
+            transform.position = pos;
             
             if(touch.phase == TouchPhase.Stationary)
             {
@@ -43,20 +45,26 @@ public class playermov : MonoBehaviour
             if (timetrack > 5f && timetrack < 5f + Time.deltaTime) { Score.inst.score = Score.inst.score + 30; TextAnimeController.animeInst.AnimePlay(5); }
         }
 
+        if(Input.touchCount<1)
+        {
+            pos.z = Mathf.Lerp(pos.z, pos.z + speed + 0.1f, t);
+            t -=Mathf.Clamp01(0.05f);
+            //pos.z = pos.z+speed;
+            transform.position = pos;
+        }
+
 
 
         if(Input.GetKey(KeyCode.Space) && obscollider.isalive)
         {
             pos.z = Mathf.Lerp(pos.z,pos.z + speed+0.1f , t);
-            t += 0.02f;
+            t += 0.05f;
             transform.position = pos; 
-           print(speed);
         }
         else
         {
             t = 0;
          }
-
 
         speed = speed + Time.deltaTime / 700;
     }

@@ -14,10 +14,6 @@ public class Animationcontroller : MonoBehaviour
     private Color tempcolor;
 
 
-    private void Start()
-    {
-        Application.targetFrameRate = 30;
-    }
 
 
     public void Playbutton()
