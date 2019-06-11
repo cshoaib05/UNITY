@@ -15,11 +15,13 @@ public class playermov : MonoBehaviour
 
     void Update()
     {
+        int touchcountpress = Input.touchCount;
 
-        if (Input.touchCount>0 && obscollider.isalive)
+
+        if (touchcountpress>0 && obscollider.isalive)
         {
             Touch touch = Input.GetTouch(0);
-            pos.z = Mathf.Lerp(pos.z, pos.z + speed + 0.1f, t);
+            pos.z = Mathf.SmoothStep(pos.z, pos.z + speed + 0.1f, t);
             t += Mathf.Clamp01(0.05f);
             //pos.z = pos.z+speed;
             transform.position = pos;
@@ -32,6 +34,7 @@ public class playermov : MonoBehaviour
             if (touch.phase == TouchPhase.Ended)
             {
                 timetrack = 0f;
+                touchcountpress=0;
             }
 
             if (timetrack > 1f && timetrack < 1f+Time.deltaTime) { Score.inst.score = Score.inst.score + 10; TextAnimeController.animeInst.AnimePlay(1); }
@@ -45,26 +48,12 @@ public class playermov : MonoBehaviour
             if (timetrack > 5f && timetrack < 5f + Time.deltaTime) { Score.inst.score = Score.inst.score + 30; TextAnimeController.animeInst.AnimePlay(5); }
         }
 
-        if(Input.touchCount<1)
+        if (touchcountpress == 0)
         {
-            pos.z = Mathf.Lerp(pos.z, pos.z + speed + 0.1f, t);
-            t -=Mathf.Clamp01(0.05f);
-            //pos.z = pos.z+speed;
+            pos.z = Mathf.SmoothStep(pos.z, pos.z + 0.05f, t);
+            t -= Mathf.Clamp01(0.05f);
             transform.position = pos;
         }
-
-
-
-        if(Input.GetKey(KeyCode.Space) && obscollider.isalive)
-        {
-            pos.z = Mathf.Lerp(pos.z,pos.z + speed+0.1f , t);
-            t += 0.05f;
-            transform.position = pos; 
-        }
-        else
-        {
-            t = 0;
-         }
 
         speed = speed + Time.deltaTime / 700;
     }
