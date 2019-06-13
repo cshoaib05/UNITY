@@ -27,10 +27,12 @@ public class TextAnimeController : MonoBehaviour
         else
         {
             if (index == 1) { text.text = "Short Streak  +10";  }
-            if (index == 2) { text.text = "Long Streak  +15"; }
-            if (index == 3) { text.text = "Super Streak  +20"; }
-            if (index == 4) { text.text = "Mega Streak  +25"; }
-            if (index == 5) { text.text = "Ultra Streak  +30"; }
+            if (index == 2) { text.text = "Streak  +15"; }
+            if (index == 3) { text.text = "Long Streak  +20"; }
+            if (index == 4) { text.text = "Super Streak  +25"; }
+            if (index == 5) { text.text = "Mega Streak  +30"; }
+            if (index == 6) { text.text = "Ultra Streak  +35"; }
+            if (index == 7) { text.text = "OMG Streak  +40"; }
             streaktext.text = "Streak: " + streakcount++.ToString();
             textanime.Play("textAnime");
         }

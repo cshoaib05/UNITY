@@ -23,10 +23,6 @@ public class Score : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space ) && Time.frameCount%15 == 0 && obscollider.isalive)
-        {
-            score++;
-        }
 
         if ((Input.touchCount > 0) && Time.frameCount%15 == 0 && obscollider.isalive)
         {
