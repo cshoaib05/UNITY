@@ -18,7 +18,9 @@ public class Score : MonoBehaviour
 
     void Start()
     {
+
         score = 0;
+
     }
 
     void FixedUpdate()
@@ -31,5 +33,10 @@ public class Score : MonoBehaviour
 
         scoretext.text = score.ToString();
         scorepaneltext.text = score.ToString();
+        
+        if (score > PlayerPrefs.GetInt("highscore", 0))
+        {
+            PlayerPrefs.SetInt("highscore", score);
+        }
     }
 }

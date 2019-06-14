@@ -1,11 +1,19 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
 
 public class SceneManagement : MonoBehaviour
 {
 
     public GameObject pausepanel;
+    public TextMeshProUGUI[] statstext;
 
+    private void Start()
+    {
+        statstext[0].text = PlayerPrefs.GetInt("highscore").ToString();
+        statstext[1].text = PlayerPrefs.GetInt("streaks").ToString();
+        statstext[2].text = PlayerPrefs.GetInt("nearmiss").ToString();
+    }
 
     private void Awake()
     {
@@ -16,6 +24,7 @@ public class SceneManagement : MonoBehaviour
     public void Loadthescene(int name)
     {
         Time.timeScale = 1;
+        Nearmiss.neaarmisscount = 0;
         SceneManager.LoadScene(name);
     } 
 
@@ -31,9 +40,11 @@ public class SceneManagement : MonoBehaviour
         Time.timeScale = 1;
     }
 
-
     public void Quit()
     {
         Application.Quit();
     }
+
+
+
 }

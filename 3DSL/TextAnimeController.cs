@@ -8,6 +8,8 @@ public class TextAnimeController : MonoBehaviour
     public Animator textanime;
     public Animator textanimenear;
     public TextMeshProUGUI streaktext;
+    public TextMeshProUGUI streaktext2;
+
     public TextMeshProUGUI text;
 
     private int streakcount;
@@ -34,10 +36,14 @@ public class TextAnimeController : MonoBehaviour
             if (index == 6) { text.text = "Ultra Streak  +35"; }
             if (index == 7) { text.text = "OMG Streak  +40"; }
             streaktext.text = "Streak: " + streakcount++.ToString();
+            streaktext2.text="streak:" + streakcount++.ToString();
             textanime.Play("textAnime");
         }
 
-
+        if (streakcount > PlayerPrefs.GetInt("streaks", 0))
+        {
+            PlayerPrefs.SetInt("streaks", streakcount);
+        }
     }
 
 }

@@ -2,6 +2,7 @@
 
 public class playermov : MonoBehaviour
 {
+    public GameObject nearmissobj;
     private Vector3 pos;
     float  t = 0f;
     public float timetrack;
@@ -14,6 +15,11 @@ public class playermov : MonoBehaviour
 
     void Update()
     {
+        if( Nearmiss.nearmiss==true)
+        {
+            nearmissobj.SetActive(false);
+        }
+
         int touchcountpress = Input.touchCount;
 
 
@@ -30,7 +36,8 @@ public class playermov : MonoBehaviour
            t = Mathf.Clamp01(t);
 
             transform.position = pos;
-
+            nearmissobj.SetActive(true);
+            Nearmiss.nearmiss = false;
             if (touch.phase == TouchPhase.Stationary)
             {
                 timetrack += Time.deltaTime;

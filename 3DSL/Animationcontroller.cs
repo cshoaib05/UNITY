@@ -13,6 +13,7 @@ public class Animationcontroller : MonoBehaviour
     public Image[] iconsimage;
     private Color tempcolor;
 
+    public GameObject statspanel;
 
 
 
@@ -121,6 +122,20 @@ public class Animationcontroller : MonoBehaviour
     {
         Panelshow(4);
         iconswhite.SetActive(false);
+    }
+
+
+    public void showstats()
+    {
+        iconswhite.SetActive(false);
+        panels[1].SetActive(false);
+        statspanel.SetActive(true);
+    }
+
+    public void hidestats()
+    {
+        statspanel.SetActive(false);
+        mainbutton.SetActive(true);
     }
 
 }

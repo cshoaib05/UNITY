@@ -28,6 +28,7 @@ public class obscollider : MonoBehaviour
             trailRenderer.enabled = false;
             sphere.SetActive(false);
             isalive = false;
+            Handheld.Vibrate();
             StartCoroutine(waitingmethod());
         }
     }
