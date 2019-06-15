@@ -15,6 +15,7 @@ public class playermov : MonoBehaviour
 
     void Update()
     {
+
         if( Nearmiss.nearmiss==true)
         {
             nearmissobj.SetActive(false);
@@ -28,7 +29,7 @@ public class playermov : MonoBehaviour
             touchcountpress = 1;
         }
 
-        if (touchcountpress == 1 && obscollider.isalive)
+        if (touchcountpress == 1  && obscollider.isalive)
         {
             Touch touch = Input.GetTouch(0);
             pos.z = Mathf.SmoothStep(pos.z, pos.z + 0.25f,t);
@@ -73,6 +74,7 @@ public class playermov : MonoBehaviour
         {
             if (touchcountpress == 0)
             {
+                pos.z = transform.position.z;
                 pos.z = Mathf.SmoothStep(pos.z, pos.z + 0.15f, t);
                 t = t - 0.1f;
                 t = Mathf.Clamp01(t);

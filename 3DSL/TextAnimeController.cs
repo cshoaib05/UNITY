@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using TMPro;
 using UnityEngine;
 
@@ -12,6 +12,7 @@ public class TextAnimeController : MonoBehaviour
 
     public TextMeshProUGUI text;
 
+
     private int streakcount;
 
     private void Awake()
@@ -20,6 +21,7 @@ public class TextAnimeController : MonoBehaviour
     }
     private void Start()
     {
+
         streakcount = 0;
     }
 
@@ -36,7 +38,7 @@ public class TextAnimeController : MonoBehaviour
             if (index == 6) { text.text = "Ultra Streak  +35"; }
             if (index == 7) { text.text = "OMG Streak  +40"; }
             streaktext.text = "Streak: " + streakcount++.ToString();
-            streaktext2.text="streak:" + streakcount++.ToString();
+            streaktext2.text = streaktext.text;
             textanime.Play("textAnime");
         }
 

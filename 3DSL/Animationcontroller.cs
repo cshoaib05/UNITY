@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.Sprites;
+﻿
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -14,12 +12,12 @@ public class Animationcontroller : MonoBehaviour
     private Color tempcolor;
 
     public GameObject statspanel;
-
+    public GameObject statspanel2;
 
 
     public void Playbutton()
      {
-        print(iconsimage.Length);
+
         mainbutton.SetActive(false);
         iconswhite.SetActive(true);
         iconanim.Play("IconAnim");
@@ -125,17 +123,29 @@ public class Animationcontroller : MonoBehaviour
     }
 
 
-    public void showstats()
+    public void showhigh()
     {
         iconswhite.SetActive(false);
         panels[1].SetActive(false);
         statspanel.SetActive(true);
     }
 
-    public void hidestats()
+    public void hidehigh()
     {
         statspanel.SetActive(false);
         mainbutton.SetActive(true);
     }
 
+    public void showstats()
+    {
+        iconswhite.SetActive(false);
+        panels[1].SetActive(false);
+        statspanel2.SetActive(true);
+    }
+
+    public void hidestats()
+    {
+        statspanel2.SetActive(false);
+        mainbutton.SetActive(true);
+    }
 }
