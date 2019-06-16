@@ -1,4 +1,4 @@
-﻿
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -8,10 +8,10 @@ public class TextAnimeController : MonoBehaviour
     public Animator textanime;
     public Animator textanimenear;
     public TextMeshProUGUI streaktext;
+    public TextMeshProUGUI timeattackstreaktext;
     public TextMeshProUGUI streaktext2;
-
+    public GameObject timeattackpanel;
     public TextMeshProUGUI text;
-
 
     private int streakcount;
 
@@ -21,8 +21,16 @@ public class TextAnimeController : MonoBehaviour
     }
     private void Start()
     {
-
         streakcount = 0;
+    }
+
+
+    private void  FixedUpdate()
+    {
+        if(Score.timer>0 && Score.timer<0.1 && SceneManagement.timeattack)
+        {
+            AnimePlay(8);
+        }
     }
 
     public void AnimePlay(int index)
@@ -39,13 +47,30 @@ public class TextAnimeController : MonoBehaviour
             if (index == 7) { text.text = "OMG Streak  +40"; }
             streaktext.text = "Streak: " + streakcount++.ToString();
             streaktext2.text = streaktext.text;
+            timeattackstreaktext.text = streaktext.text;
             textanime.Play("textAnime");
         }
 
+        if (index == 8)
+        {
+            text.text = "Times Up !! ";
+            textanime.Play("textAnime");
+            StartCoroutine(waitmethod());
+        }
         if (streakcount > PlayerPrefs.GetInt("streaks", 0))
         {
             PlayerPrefs.SetInt("streaks", streakcount);
         }
+
+
     }
+
+    IEnumerator waitmethod()
+    {
+        yield return new WaitForSeconds(1f);
+        timeattackpanel.SetActive(true);
+    }
+
+
 
 }

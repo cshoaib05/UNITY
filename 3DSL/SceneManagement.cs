@@ -9,6 +9,7 @@ public class SceneManagement : MonoBehaviour
     public TextMeshProUGUI[] statstext;
    public TextMeshProUGUI vibratetext;
    public TextMeshProUGUI MusicText;
+    
 
     public static bool timeattack;
     public static bool classic;
@@ -84,7 +85,7 @@ public class SceneManagement : MonoBehaviour
         Loadthescene(1);
         timeattack = true;
         classic = false;
-    }
+     }
 
 
 

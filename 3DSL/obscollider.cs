@@ -45,15 +45,18 @@ public class obscollider : MonoBehaviour
         if (other.gameObject.CompareTag("obstacles") && SceneManagement.timeattack)
         {
             mesh.enabled = false;
+            playermov.timetrack = 0f;
             sphere.SetActive(false);
             playerrender.enabled = false;
             trailRenderer.enabled = false;
             obscollider.isalive = false;
+            if (vibrate == 1)
+            {
+                Handheld.Vibrate();
+            }
             StartCoroutine(waitingmethod());
-           
+            
         }
-
-
     }
 
 
@@ -65,22 +68,53 @@ public class obscollider : MonoBehaviour
 
         if(SceneManagement.timeattack)
         {
-            Mainplayer.transform.position = Mainplayer.transform.position + new Vector3(0, 0, 3f);
-            mesh.enabled = true;
+            Mainplayer.transform.position = Mainplayer.transform.position + new Vector3(0, 0,1f);
             playerrender.enabled = true;
             trailRenderer.enabled = true;
-            sphere.SetActive(true);
             obscollider.isalive = true;
+            StartCoroutine(waitingmethod2());
         }
         else
         {
             Time.timeScale = 0f;
             scorepanel.SetActive(true);
         }
-        
-
     }
 
+
+    IEnumerator waitingmethod2()
+    {
+        yield return new WaitForSeconds(0.3f);
+        playerrender.enabled = false;
+        trailRenderer.enabled = false;
+        StartCoroutine(waitingmethod3());
+    }
+
+
+    IEnumerator waitingmethod3()
+    {
+     yield return new WaitForSeconds(0.3f);
+        playerrender.enabled = true;
+        trailRenderer.enabled = true;
+        StartCoroutine(waitingmethod4());
+    }
+
+    IEnumerator waitingmethod4()
+    {
+        yield return new WaitForSeconds(0.3f);
+        playerrender.enabled = false;
+        trailRenderer.enabled = false;
+        StartCoroutine(waitingmethod5());
+    }
+
+    IEnumerator waitingmethod5()
+    {
+        yield return new WaitForSeconds(0.3f);
+        playerrender.enabled = true;
+        trailRenderer.enabled = true;
+        mesh.enabled = true;
+        sphere.SetActive(true);
+    }
 }
 
 

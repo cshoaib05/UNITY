@@ -23,6 +23,7 @@ public class Nearmiss : MonoBehaviour
             Score.inst.score = Score.inst.score + 10;
 
         }
+
         if (neaarmisscount > PlayerPrefs.GetInt("nearmiss", 0))
         {
             PlayerPrefs.SetInt("nearmiss", neaarmisscount);

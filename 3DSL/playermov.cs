@@ -5,7 +5,7 @@ public class playermov : MonoBehaviour
     public GameObject nearmissobj;
     private Vector3 pos;
     float  t = 0f;
-    public float timetrack;
+    public static float timetrack;
 
     void Start()
     {

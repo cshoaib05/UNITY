@@ -1,4 +1,4 @@
-﻿
+﻿using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -14,6 +14,15 @@ public class Animationcontroller : MonoBehaviour
     public GameObject statspanel;
     public GameObject statspanel2;
 
+
+    public TextMeshProUGUI statsclassic;
+    public TextMeshProUGUI statstimeattack;
+
+    private void Start()
+    {
+        statsclassic.text = PlayerPrefs.GetInt("highscore", 0).ToString();
+        statstimeattack.text = PlayerPrefs.GetInt("timescore", 0).ToString();
+    }
 
     public void Playbutton()
      {
