@@ -17,11 +17,13 @@ public class Animationcontroller : MonoBehaviour
 
     public TextMeshProUGUI statsclassic;
     public TextMeshProUGUI statstimeattack;
+    public TextMeshProUGUI stasdash;
 
     private void Start()
     {
         statsclassic.text = PlayerPrefs.GetInt("highscore", 0).ToString();
         statstimeattack.text = PlayerPrefs.GetInt("timescore", 0).ToString();
+        stasdash.text = PlayerPrefs.GetFloat("dashscore", 0).ToString();
     }
 
     public void Playbutton()

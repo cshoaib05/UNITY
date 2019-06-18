@@ -12,6 +12,8 @@ public class spwanner : MonoBehaviour
         obsController.SpawnObs();
         obsController.SpawnObs();
         obsController.SpawnObs();
+        obsController.SpawnObs();
+        obsController.SpawnObs();
     }
 
     private void OnTriggerEnter(Collider other)

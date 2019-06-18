@@ -20,7 +20,14 @@ public class Nearmiss : MonoBehaviour
             TextAnimeController.animeInst.AnimePlay(0);
             nearmiss = true;
             neaarmisscount++;
-            Score.inst.score = Score.inst.score + 10;
+            if(SceneManagement.dash)
+            {
+                Score.inst.score = Score.inst.score - 10;
+            }
+            else
+            {
+                Score.inst.score = Score.inst.score + 10;
+            }
 
         }
 

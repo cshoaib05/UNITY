@@ -50,25 +50,127 @@ public class playermov : MonoBehaviour
 
             }
 
-            if (timetrack > 1f && timetrack < 1f + Time.deltaTime) { Score.inst.score = Score.inst.score + 10; TextAnimeController.animeInst.AnimePlay(1); }
+            if (timetrack > 1f && timetrack < 1f + Time.deltaTime)
+            {
+                if(SceneManagement.dash)
+                {
+                    Score.inst.score = Score.inst.score - 10;
+                }
+                else
+                {
+                    Score.inst.score = Score.inst.score + 10;
+                }
+                 TextAnimeController.animeInst.AnimePlay(1);
+            }
 
-            if (timetrack > 2f && timetrack < 2f + Time.deltaTime) { Score.inst.score = Score.inst.score + 15; TextAnimeController.animeInst.AnimePlay(2); }
+            if (timetrack > 2f && timetrack < 2f + Time.deltaTime)
+            {
+                if (SceneManagement.dash)
+                {
+                    Score.inst.score = Score.inst.score - 15;
+                }
+                else
+                {
+                    Score.inst.score = Score.inst.score + 15;
+                }
+                TextAnimeController.animeInst.AnimePlay(2);
+            }
 
-            if (timetrack > 3f && timetrack < 3f + Time.deltaTime) { Score.inst.score = Score.inst.score + 20; TextAnimeController.animeInst.AnimePlay(3); }
+            if (timetrack > 3f && timetrack < 3f + Time.deltaTime)
+            {
+                if (SceneManagement.dash)
+                {
+                    Score.inst.score = Score.inst.score - 20;
+                }
+                else
+                {
+                    Score.inst.score = Score.inst.score + 20;
+                }
+                TextAnimeController.animeInst.AnimePlay(3); }
 
-            if (timetrack > 4f && timetrack < 4f + Time.deltaTime) { Score.inst.score = Score.inst.score + 25; TextAnimeController.animeInst.AnimePlay(4); }
+            if (timetrack > 4f && timetrack < 4f + Time.deltaTime)
+            {
+                if (SceneManagement.dash)
+                {
+                    Score.inst.score = Score.inst.score - 25;
+                }
+                else
+                {
+                    Score.inst.score = Score.inst.score + 25;
+                }
+                TextAnimeController.animeInst.AnimePlay(4); }
 
-            if (timetrack > 5f && timetrack < 5f + Time.deltaTime) { Score.inst.score = Score.inst.score + 30; TextAnimeController.animeInst.AnimePlay(5); }
+            if (timetrack > 5f && timetrack < 5f + Time.deltaTime)
+            {
+                if (SceneManagement.dash)
+                {
+                    Score.inst.score = Score.inst.score - 30;
+                }
+                else
+                {
+                    Score.inst.score = Score.inst.score + 30;
+                }
+                TextAnimeController.animeInst.AnimePlay(5); }
 
-            if (timetrack > 6f && timetrack < 6f + Time.deltaTime) { Score.inst.score = Score.inst.score + 35; TextAnimeController.animeInst.AnimePlay(6); }
+            if (timetrack > 6f && timetrack < 6f + Time.deltaTime)
+            {
+                if (SceneManagement.dash)
+                {
+                    Score.inst.score = Score.inst.score - 35;
+                }
+                else
+                {
+                    Score.inst.score = Score.inst.score + 35;
+                }
+                TextAnimeController.animeInst.AnimePlay(6); }
 
-            if (timetrack > 7f && timetrack < 7f + Time.deltaTime) { Score.inst.score = Score.inst.score + 40; TextAnimeController.animeInst.AnimePlay(7); }
+            if (timetrack > 7f && timetrack < 7f + Time.deltaTime)
+            {
+                if (SceneManagement.dash)
+                {
+                    Score.inst.score = Score.inst.score - 40;
+                }
+                else
+                {
+                    Score.inst.score = Score.inst.score + 40;
+                }
+                TextAnimeController.animeInst.AnimePlay(7); }
 
-            if (timetrack > 8f && timetrack < 8f + Time.deltaTime) { Score.inst.score = Score.inst.score + 40; TextAnimeController.animeInst.AnimePlay(7); }
+            if (timetrack > 8f && timetrack < 8f + Time.deltaTime)
+            {
+                if (SceneManagement.dash)
+                {
+                    Score.inst.score = Score.inst.score - 40;
+                }
+                else
+                {
+                    Score.inst.score = Score.inst.score + 40;
+                }
+                TextAnimeController.animeInst.AnimePlay(7); }
 
-            if (timetrack > 9f && timetrack < 9f + Time.deltaTime) { Score.inst.score = Score.inst.score + 40; TextAnimeController.animeInst.AnimePlay(7); }
+            if (timetrack > 9f && timetrack < 9f + Time.deltaTime)
+            {
+                if (SceneManagement.dash)
+                {
+                    Score.inst.score = Score.inst.score - 40;
+                }
+                else
+                {
+                    Score.inst.score = Score.inst.score + 40;
+                }
+                TextAnimeController.animeInst.AnimePlay(7); }
 
-            if (timetrack > 10f && timetrack < 10f + Time.deltaTime) { Score.inst.score = Score.inst.score + 40; TextAnimeController.animeInst.AnimePlay(7); }
+            if (timetrack > 10f && timetrack < 10f + Time.deltaTime)
+            {
+                if (SceneManagement.dash)
+                {
+                    Score.inst.score = Score.inst.score - 40;
+                }
+                else
+                {
+                    Score.inst.score = Score.inst.score + 40;
+                }
+                TextAnimeController.animeInst.AnimePlay(7); }
         }
         else
         {

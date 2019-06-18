@@ -13,6 +13,7 @@ public class SceneManagement : MonoBehaviour
 
     public static bool timeattack;
     public static bool classic;
+    public static bool dash;
 
     private void Start()
     {
@@ -57,11 +58,13 @@ public class SceneManagement : MonoBehaviour
     public void pause()
     {
         Time.timeScale = 0;
+        obscollider.isalive = false;
         pausepanel.SetActive(true);
     }
 
     public void resume()
     {
+        obscollider.isalive = true;
         pausepanel.SetActive(false);
         Time.timeScale = 1;
     }
@@ -76,16 +79,26 @@ public class SceneManagement : MonoBehaviour
 
         Loadthescene(1);
         timeattack = false;
+        dash = false;
         classic = true;
     }
  
     public void loadtimeattack()
     {
-
         Loadthescene(1);
         timeattack = true;
         classic = false;
+        dash = false;
      }
+
+    public void loaddash()
+    {
+        Loadthescene(1);
+        obscollider.outcount = 0;
+        timeattack = false;
+        classic = false;
+        dash = true;
+    }
 
 
 
