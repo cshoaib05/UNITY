@@ -125,6 +125,7 @@ public class Score : MonoBehaviour
     IEnumerator waitmethod()
     {
         yield return new WaitForSeconds(2);
+        Adscontroller.showads();
         dashscorepanel.SetActive(true);
         Time.timeScale = 0f;
     }

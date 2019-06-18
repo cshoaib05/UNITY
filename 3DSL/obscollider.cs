@@ -101,6 +101,7 @@ public class obscollider : MonoBehaviour
 
         if (SceneManagement.classic)
         {
+            Adscontroller.showads();
             Time.timeScale = 0f;
             scorepanel.SetActive(true);
         }
@@ -115,7 +116,8 @@ public class obscollider : MonoBehaviour
         } 
             if(SceneManagement.dash && outcount>=3)
             {
-                dashscorepanel.SetActive(true);
+            Adscontroller.showads();
+            dashscorepanel.SetActive(true);
                 isalive = false;
             }
     }

@@ -71,6 +71,7 @@ public class TextAnimeController : MonoBehaviour
     IEnumerator waitmethod()
     {
         yield return new WaitForSeconds(1f);
+        Adscontroller.showads();
         timeattackpanel.SetActive(true);
     }
 
