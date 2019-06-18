@@ -6,6 +6,7 @@ public class playermov : MonoBehaviour
     private Vector3 pos;
     float  t = 0f;
     public static float timetrack;
+    public ParticleSystem streakeffect;
 
     void Start()
     {
@@ -182,6 +183,16 @@ public class playermov : MonoBehaviour
                 t = Mathf.Clamp01(t);
                 transform.position = pos;
             }
+        }
+
+
+        if (timetrack >= 2)
+        {
+            streakeffect.Play();
+        }
+        else
+        {
+            streakeffect.Stop();
         }
 
     }

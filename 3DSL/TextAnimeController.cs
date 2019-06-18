@@ -12,7 +12,7 @@ public class TextAnimeController : MonoBehaviour
     public TextMeshProUGUI streaktext2;
     public GameObject timeattackpanel;
     public TextMeshProUGUI text;
-    public ParticleSystem streakeffect;
+
 
     private int streakcount;
 
@@ -52,14 +52,7 @@ public class TextAnimeController : MonoBehaviour
             textanime.Play("textAnime");
            
         }
-        if (index > 1 && index < 8)
-        {
-            streakeffect.Play();
-        }
-        else
-        {
-            streakeffect.Stop();
-        }
+ 
 
         if (index == 8)
         {
