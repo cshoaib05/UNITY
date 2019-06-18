@@ -85,7 +85,7 @@ public class Score : MonoBehaviour
         if(SceneManagement.classic)
         {
             scorepaneltext.text = score.ToString();
-            pausetext.text = score.ToString();
+            pausetext.text = scorepaneltext.text;
             if (score > PlayerPrefs.GetInt("highscore", 0))
             {
                 PlayerPrefs.SetInt("highscore", score);
@@ -95,7 +95,7 @@ public class Score : MonoBehaviour
         if(SceneManagement.timeattack)
         {
             timeattackscorepaneltext.text = score.ToString();
-            pausetext.text = score.ToString();
+            pausetext.text = timeattackscorepaneltext.text;
             if (score > PlayerPrefs.GetInt("timescore", 0))
             {
                 PlayerPrefs.SetInt("timescore", score);
@@ -118,9 +118,6 @@ public class Score : MonoBehaviour
             }
 
         }
-
-       
-
 
     }
 

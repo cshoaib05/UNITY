@@ -101,12 +101,11 @@ public class obscollider : MonoBehaviour
 
         if (SceneManagement.classic)
         {
-            isalive = false;
             Time.timeScale = 0f;
             scorepanel.SetActive(true);
         }
 
-        if (SceneManagement.timeattack || outcount <3)
+        if (SceneManagement.timeattack || (SceneManagement.dash && outcount <3))
         {
             Mainplayer.transform.position = Mainplayer.transform.position + new Vector3(0, 0, 2f);
             playerrender.enabled = true;
