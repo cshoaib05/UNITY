@@ -9,6 +9,8 @@ public class TextAnimeController : MonoBehaviour
     public Animator textanimenear;
     public TextMeshProUGUI streaktext;
     public TextMeshProUGUI timeattackstreaktext;
+    public TextMeshProUGUI dashstreaktext;
+
     public TextMeshProUGUI streaktext2;
     public GameObject timeattackpanel;
     public TextMeshProUGUI text;
@@ -49,8 +51,9 @@ public class TextAnimeController : MonoBehaviour
             streaktext.text = "Streak: " + streakcount++.ToString();
             streaktext2.text = streaktext.text;
             timeattackstreaktext.text = streaktext.text;
+            dashstreaktext.text = streaktext.text;
             textanime.Play("textAnime");
-           
+
         }
  
 

@@ -1,19 +1,44 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Audio;
+using System;
+
 
 public class AudioManager : MonoBehaviour
 {
     public static int music;
+    public Sound[] sound;
 
-    void Start()
+
+    private void Awake()
     {
         music = PlayerPrefs.GetInt("music");
+
+        foreach (Sound s in sound)
+        {
+            s.source=gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.Clip;
+            if(music==1)
+            {
+                s.source.volume = 1;
+            }
+            else
+            {
+                s.source.volume = 0;
+            }
+            
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void Play(string name)
     {
-        
+        foreach (Sound s in sound)
+        {
+            if (s.name == name)
+            {
+                s.source.Play();
+            }
+        }
     }
+
 }
