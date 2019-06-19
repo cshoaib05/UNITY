@@ -1,42 +1,52 @@
-﻿using UnityEngine.Audio;
+﻿using UnityEngine;
+using UnityEngine.Audio;
 using System;
-using UnityEngine;
+
 
 public class AudioManager : MonoBehaviour
-{    
-     public Sound[] Sounds;
-    public static int sfxvolume;
+{
+    public static int music;
+    public Sound[] sound;
 
 
-    public void Awake()
+    private void Awake()
     {
-        sfxvolume = 1;
-        foreach (Sound s in Sounds)
+        music = PlayerPrefs.GetInt("music");
+
+        foreach (Sound s in sound)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            if(s.source.name =="crash")
+            s.source=gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.Clip;
+            if(music==1)
             {
-                s.source.volume = s.volume;
+                s.source.volume = 1;
             }
             else
             {
-                s.source.volume = sfxvolume;
+                s.source.volume = 0;
             }
-             s.source.clip = s.clip ;
-            s.source.pitch = s.pitch;
+            
         }
     }
 
- public void Play( string name)
+
+    public void Play(string name)
     {
-        foreach (Sound s in Sounds)
+        foreach (Sound s in sound)
         {
-            if(s.name == name)
+            if (music == 1)
+            {
+                s.source.volume = 1;
+            }
+            else
+            {
+                s.source.volume = 0;
+            }
+            if (s.name == name)
             {
                 s.source.Play();
             }
         }
     }
-
 
 }

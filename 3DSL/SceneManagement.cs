@@ -9,7 +9,7 @@ public class SceneManagement : MonoBehaviour
     public TextMeshProUGUI[] statstext;
    public TextMeshProUGUI vibratetext;
    public TextMeshProUGUI MusicText;
-    
+    public AudioManager audioManager;
 
     public static bool timeattack;
     public static bool classic;
@@ -17,7 +17,7 @@ public class SceneManagement : MonoBehaviour
 
     private void Start()
     {
-
+        audioManager = FindObjectOfType<AudioManager>();
         statstext[0].text = PlayerPrefs.GetInt("highscore").ToString();
         statstext[1].text = PlayerPrefs.GetInt("streaks").ToString();
         statstext[2].text = PlayerPrefs.GetInt("nearmiss").ToString();
@@ -50,7 +50,7 @@ public class SceneManagement : MonoBehaviour
 
     public void Loadthescene(int name)
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Time.timeScale = 1;
         Nearmiss.neaarmisscount = 0;
         SceneManager.LoadScene(name);
@@ -58,7 +58,7 @@ public class SceneManagement : MonoBehaviour
 
     public void pause()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Time.timeScale = 0;
         obscollider.isalive = false;
         pausepanel.SetActive(true);
@@ -66,7 +66,7 @@ public class SceneManagement : MonoBehaviour
 
     public void resume()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         obscollider.isalive = true;
         pausepanel.SetActive(false);
         Time.timeScale = 1;
@@ -74,13 +74,13 @@ public class SceneManagement : MonoBehaviour
 
     public void Quit()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Application.Quit();
     }
 
     public void loadclassic()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Loadthescene(1);
         timeattack = false;
         dash = false;
@@ -89,7 +89,7 @@ public class SceneManagement : MonoBehaviour
  
     public void loadtimeattack()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Loadthescene(1);
         timeattack = true;
         classic = false;
@@ -98,7 +98,7 @@ public class SceneManagement : MonoBehaviour
 
     public void loaddash()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Loadthescene(1);
         obscollider.outcount = 0;
         timeattack = false;
@@ -112,7 +112,7 @@ public class SceneManagement : MonoBehaviour
 
     public void vibratebutton()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         if (obscollider.vibrate == 1)
         {
             obscollider.vibrate = 0;
@@ -131,7 +131,7 @@ public class SceneManagement : MonoBehaviour
 
     public void Musicbutton()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         if (AudioManager.music == 1)
         {
             AudioManager.music = 0;

@@ -34,6 +34,14 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound s in sound)
         {
+            if (music == 1)
+            {
+                s.source.volume = 1;
+            }
+            else
+            {
+                s.source.volume = 0;
+            }
             if (s.name == name)
             {
                 s.source.Play();

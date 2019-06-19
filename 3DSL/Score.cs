@@ -89,6 +89,7 @@ public class Score : MonoBehaviour
             if (score > PlayerPrefs.GetInt("highscore", 0))
             {
                 PlayerPrefs.SetInt("highscore", score);
+                playgamecontroller.posttoleaderboard(score);
             }
         }
 

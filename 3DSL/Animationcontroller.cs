@@ -18,9 +18,10 @@ public class Animationcontroller : MonoBehaviour
     public TextMeshProUGUI statsclassic;
     public TextMeshProUGUI statstimeattack;
     public TextMeshProUGUI stasdash;
-
+    public AudioManager audioManager;
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         statsclassic.text = PlayerPrefs.GetInt("highscore", 0).ToString();
         statstimeattack.text = PlayerPrefs.GetInt("timescore", 0).ToString();
         stasdash.text = PlayerPrefs.GetFloat("dashscore", 0).ToString();
@@ -28,7 +29,7 @@ public class Animationcontroller : MonoBehaviour
 
     public void Playbutton()
      {
-        FindObjectOfType<AudioManager>().Play("main");
+        audioManager.Play("main");
         mainbutton.SetActive(false);
         iconswhite.SetActive(true);
         iconanim.Play("IconAnim");
@@ -39,7 +40,7 @@ public class Animationcontroller : MonoBehaviour
     
     public void Profilebutton()
     {
-        FindObjectOfType<AudioManager>().Play("main");
+        audioManager.Play("main");
         mainbutton.SetActive(false);
         iconswhite.SetActive(true);
         iconanim.Play("IconAnim");
@@ -50,7 +51,7 @@ public class Animationcontroller : MonoBehaviour
 
     public void Settbutton()
     {
-        FindObjectOfType<AudioManager>().Play("main");
+        audioManager.Play("main");
         mainbutton.SetActive(false);
         iconswhite.SetActive(true);
         iconanim.Play("IconAnim");
@@ -60,7 +61,7 @@ public class Animationcontroller : MonoBehaviour
 
     public void exitbutton()
     {
-        FindObjectOfType<AudioManager>().Play("main");
+      audioManager.Play("main");
         mainbutton.SetActive(false);
         iconswhite.SetActive(true);
         iconanim.Play("IconAnim");
@@ -70,7 +71,7 @@ public class Animationcontroller : MonoBehaviour
 
     public void playicon()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Panelshow(0);
         showimagewhite(0);
 
@@ -78,21 +79,21 @@ public class Animationcontroller : MonoBehaviour
 
     public void profileicon()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Panelshow(1);
         showimagewhite(1);
     }
 
     public void settingicon()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Panelshow(2);
         showimagewhite(2);
     }
 
     public void  exiticon()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Panelshow(3);
         showimagewhite(3);
     }
@@ -136,7 +137,7 @@ public class Animationcontroller : MonoBehaviour
 
     public void cancelexit()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         Panelshow(4);
         iconswhite.SetActive(false);
     }
@@ -144,7 +145,7 @@ public class Animationcontroller : MonoBehaviour
 
     public void showhigh()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         iconswhite.SetActive(false);
         panels[1].SetActive(false);
         statspanel.SetActive(true);
@@ -152,14 +153,14 @@ public class Animationcontroller : MonoBehaviour
 
     public void hidehigh()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         statspanel.SetActive(false);
         mainbutton.SetActive(true);
     }
 
     public void showstats()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         iconswhite.SetActive(false);
         panels[1].SetActive(false);
         statspanel2.SetActive(true);
@@ -167,7 +168,7 @@ public class Animationcontroller : MonoBehaviour
 
     public void hidestats()
     {
-        FindObjectOfType<AudioManager>().Play("click");
+        audioManager.Play("click");
         statspanel2.SetActive(false);
         mainbutton.SetActive(true);
     }
