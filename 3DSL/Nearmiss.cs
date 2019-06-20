@@ -19,6 +19,9 @@ public class Nearmiss : MonoBehaviour
         {
             TextAnimeController.animeInst.AnimePlay(0);
             nearmiss = true;
+            playgamecontroller.instance.incrementalAchievement(GPGSIds.achievement_nearmiss100, 1);
+            playgamecontroller.instance.incrementalAchievement(GPGSIds.achievement_nearmiss1000, 1);
+
             neaarmisscount++;
             if(SceneManagement.dash)
             {

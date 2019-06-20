@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class playgamecontroller : MonoBehaviour
 {
+    public static playgamecontroller instance;
+
+    private void Awake()
+    {
+        instance = this;   
+    }
     void Start()
     {
         Authenticate();
@@ -28,15 +34,35 @@ public class playgamecontroller : MonoBehaviour
 
         Social.ReportScore(score, GPGSIds.leaderboard_highscore,(bool success)=>
         {
-            if(success)
-            {
-                Debug.Log("success");
-            }
+
         });
     }
 
     public  void showleaderboardUI()
     {
-        PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_highscore);
+            PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_highscore);
+
     }
+
+    public void UnlockAchievement(string Id)
+    {
+        Social.ReportProgress(Id, 100, (bool success) =>
+          {
+          });
+    }
+
+    public void incrementalAchievement( string Id,int stepstoincrement)
+    {
+        PlayGamesPlatform.Instance.IncrementAchievement(Id, stepstoincrement, (bool success) =>
+          {
+
+          });
+    }
+
+    public void showAchievementUI()
+    {
+        PlayGamesPlatform.Instance.ShowAchievementsUI();
+
+    }
+
 }

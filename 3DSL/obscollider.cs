@@ -104,6 +104,7 @@ public class obscollider : MonoBehaviour
             Adscontroller.showads();
             Time.timeScale = 0f;
             scorepanel.SetActive(true);
+            playgamecontroller.posttoleaderboard(Score.inst.score);
         }
 
         if (SceneManagement.timeattack || (SceneManagement.dash && outcount <3))

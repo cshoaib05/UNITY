@@ -44,10 +44,21 @@ public class TextAnimeController : MonoBehaviour
             if (index == 1) { text.text = "Short Streak  +10";  }
             if (index == 2) { text.text = "Streak  +15"; }
             if (index == 3) { text.text = "Long Streak  +20"; }
+            if(index==3)
+            {
+                playgamecontroller.instance.incrementalAchievement(GPGSIds.achievement_streak10, 1);
+                playgamecontroller.instance.incrementalAchievement(GPGSIds.achievement_streak50, 1);
+                playgamecontroller.instance.incrementalAchievement(GPGSIds.achievement_streak100, 1);
+            }
             if (index == 4) { text.text = "Super Streak  +25"; }
             if (index == 5) { text.text = "Mega Streak  +30"; }
             if (index == 6) { text.text = "Ultra Streak  +35"; }
             if (index == 7) { text.text = "OMG Streak  +40"; }
+            if (index == 7)
+            {
+                playgamecontroller.instance.incrementalAchievement(GPGSIds.achievement_omg_5, 20);
+                playgamecontroller.instance.UnlockAchievement(GPGSIds.achievement_omg);
+            }
             streaktext.text = "Streak: " + streakcount++.ToString();
             streaktext2.text = streaktext.text;
             timeattackstreaktext.text = streaktext.text;

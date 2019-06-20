@@ -11,7 +11,7 @@ public class Score : MonoBehaviour
     public TextMeshProUGUI scorepaneltext;
     public TextMeshProUGUI timeattackscorepaneltext;
     public TextMeshProUGUI dashcorepaneltext;
-    public int score;
+    public  int score;
     public GameObject player;
     public TextMeshProUGUI timetext;
     public TextMeshProUGUI pausetext;
@@ -86,10 +86,23 @@ public class Score : MonoBehaviour
         {
             scorepaneltext.text = score.ToString();
             pausetext.text = scorepaneltext.text;
+            if(score>=100)
+            {
+                playgamecontroller.instance.UnlockAchievement(GPGSIds.achievement_classic100);
+            }
+            if (score >= 500)
+            {
+                playgamecontroller.instance.UnlockAchievement(GPGSIds.achievement_classic500);
+            }
+            if (score >= 1000)
+            {
+                playgamecontroller.instance.UnlockAchievement(GPGSIds.achievement_classic1000);
+            } 
+            
             if (score > PlayerPrefs.GetInt("highscore", 0))
             {
                 PlayerPrefs.SetInt("highscore", score);
-                playgamecontroller.posttoleaderboard(score);
+                
             }
         }
 
@@ -97,6 +110,10 @@ public class Score : MonoBehaviour
         {
             timeattackscorepaneltext.text = score.ToString();
             pausetext.text = timeattackscorepaneltext.text;
+            if(score>=300)
+            {
+                playgamecontroller.instance.UnlockAchievement(GPGSIds.achievement_time300);
+            }
             if (score > PlayerPrefs.GetInt("timescore", 0))
             {
                 PlayerPrefs.SetInt("timescore", score);

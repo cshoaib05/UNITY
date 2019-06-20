@@ -1,6 +1,7 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class SceneManagement : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class SceneManagement : MonoBehaviour
    public TextMeshProUGUI vibratetext;
    public TextMeshProUGUI MusicText;
     public AudioManager audioManager;
-
+    public GameObject loadpanel;
     public static bool timeattack;
     public static bool classic;
     public static bool dash;
@@ -50,11 +51,15 @@ public class SceneManagement : MonoBehaviour
 
     public void Loadthescene(int name)
     {
+        
         audioManager.Play("click");
         Time.timeScale = 1;
         Nearmiss.neaarmisscount = 0;
-        SceneManager.LoadScene(name);
+        //SceneManager.LoadScene(name);
+        StartCoroutine(asloadasync(name));
+        //        SceneManager.LoadSceneAsync(name);
     } 
+    
 
     public void pause()
     {
@@ -146,4 +151,18 @@ public class SceneManagement : MonoBehaviour
 
         PlayerPrefs.SetInt("music", AudioManager.music);
     }
+
+    IEnumerator asloadasync(int name)
+    {
+       loadpanel.SetActive(true);
+        AsyncOperation oper = SceneManager.LoadSceneAsync(name);
+
+        while (!oper.isDone)
+        {
+            float progress = Mathf.Clamp01(oper.progress / .9f);
+            yield return null;
+        }
+    }
+
+
 }
