@@ -130,10 +130,7 @@ public class Score : MonoBehaviour
                 player.transform.position =player.transform.position + new Vector3(0, 0, 1f);
                 StartCoroutine(waitmethod());
             }
-            if (timer < PlayerPrefs.GetFloat("dashscore", 0))
-            {
-                PlayerPrefs.SetFloat("dashscore", timer);
-            }
+           
 
         }
 
@@ -144,6 +141,11 @@ public class Score : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         Adscontroller.showads();
+        if (timer > PlayerPrefs.GetFloat("dashscore", 0))
+        {
+
+            PlayerPrefs.SetFloat("dashscore", timer);
+        }
         dashscorepanel.SetActive(true);
         Time.timeScale = 0f;
     }

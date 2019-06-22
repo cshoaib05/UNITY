@@ -7,9 +7,12 @@ public class playermov : MonoBehaviour
     float  t = 0f;
     public static float timetrack;
     public ParticleSystem streakeffect;
-
+    public float streaktime;
+    private bool isended;
     void Start()
     {
+        isended = false;
+        streaktime = 0f;
         pos = transform.position;
         timetrack = 0f;
     }
@@ -32,6 +35,7 @@ public class playermov : MonoBehaviour
 
         if (touchcountpress == 1  && obscollider.isalive)
         {
+           
             Touch touch = Input.GetTouch(0);
             pos.z = Mathf.SmoothStep(pos.z, pos.z + 0.25f,t);
             t = t + 0.1f;
@@ -40,6 +44,11 @@ public class playermov : MonoBehaviour
             transform.position = pos;
             nearmissobj.SetActive(true);
             Nearmiss.nearmiss = false;
+            if(touch.phase==TouchPhase.Began)
+            {
+                isended = false;
+            }
+
             if (touch.phase == TouchPhase.Stationary)
             {
                 timetrack += Time.deltaTime;
@@ -47,8 +56,7 @@ public class playermov : MonoBehaviour
 
             if (touch.phase == TouchPhase.Ended)
             {
-                timetrack = 0f;
-
+                isended = true;
             }
 
             if (timetrack > 1f && timetrack < 1f + Time.deltaTime)
@@ -172,7 +180,8 @@ public class playermov : MonoBehaviour
                     Score.inst.score = Score.inst.score + 40;
                 }
                 TextAnimeController.animeInst.AnimePlay(7); }
-        }
+
+             }
         else
         {
             if (touchcountpress == 0)
@@ -185,6 +194,16 @@ public class playermov : MonoBehaviour
             }
         }
 
+        if(isended)
+        {
+            streaktime = streaktime + Time.deltaTime;
+            if (streaktime > 0.5f)
+            {
+                isended = false;
+                timetrack = 0f;
+                streaktime = 0f;
+            }
+        }
 
         if (timetrack >= 2)
         {

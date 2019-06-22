@@ -24,7 +24,7 @@ public class Animationcontroller : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         statsclassic.text = PlayerPrefs.GetInt("highscore", 0).ToString();
         statstimeattack.text = PlayerPrefs.GetInt("timescore", 0).ToString();
-        stasdash.text = PlayerPrefs.GetFloat("dashscore", 0).ToString();
+        stasdash.text = PlayerPrefs.GetFloat("dashscore", 0).ToString()+"s";
     }
 
     public void Playbutton()

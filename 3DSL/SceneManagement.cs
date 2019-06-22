@@ -15,7 +15,7 @@ public class SceneManagement : MonoBehaviour
     public static bool timeattack;
     public static bool classic;
     public static bool dash;
-
+    public GameObject pausebttn;
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
@@ -161,6 +161,19 @@ public class SceneManagement : MonoBehaviour
         {
             float progress = Mathf.Clamp01(oper.progress / .9f);
             yield return null;
+        }
+    }
+
+
+    private void Update()
+    {
+        if(!obscollider.isalive)
+        {
+            pausebttn.SetActive(false);
+        }
+        else
+        {
+            pausebttn.SetActive(true);
         }
     }
 

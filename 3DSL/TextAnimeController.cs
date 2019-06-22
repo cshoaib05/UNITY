@@ -15,6 +15,7 @@ public class TextAnimeController : MonoBehaviour
     public GameObject timeattackpanel;
     public TextMeshProUGUI text;
 
+    public AudioManager audioManager;
 
     private int streakcount;
 
@@ -24,6 +25,7 @@ public class TextAnimeController : MonoBehaviour
     }
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         streakcount = 0;
     }
 
@@ -38,6 +40,8 @@ public class TextAnimeController : MonoBehaviour
 
     public void AnimePlay(int index)
     {
+        audioManager.Play("beep");
+        
         if (index == 0) { textanimenear.Play("textAnime"); }
         else
         {

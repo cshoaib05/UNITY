@@ -8,12 +8,10 @@ public class spwanner : MonoBehaviour
 
     private void Start()
     {
-        obsController.SpawnObs();
-        obsController.SpawnObs();
-        obsController.SpawnObs();
-        obsController.SpawnObs();
-        obsController.SpawnObs();
-        obsController.SpawnObs();
+        for (int i= 0;i<10;i++)
+        {
+            obsController.SpawnObs();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
