@@ -43,13 +43,15 @@ public class obscollider : MonoBehaviour
 
             if (other.gameObject.CompareTag("obstacles") && SceneManagement.classic )
         {
+ 
             outeffect.transform.position = player.transform.position;
             outeffect.Play();
             playerrender.enabled = false;
             trailRenderer.enabled = false;
             sphere.SetActive(false);
             isalive = false;
-            if(vibrate ==1)
+            playgamecontroller.posttoleaderboard(Score.inst.score);
+            if (vibrate ==1)
             {
                 Handheld.Vibrate();
             }
@@ -101,9 +103,11 @@ public class obscollider : MonoBehaviour
 
         if (SceneManagement.classic)
         {
-            Adscontroller.showads();
+
             Time.timeScale = 0f;
+            Adscontroller.showads();
             scorepanel.SetActive(true);
+
             playgamecontroller.posttoleaderboard(Score.inst.score);
         }
 

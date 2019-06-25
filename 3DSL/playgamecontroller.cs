@@ -9,7 +9,8 @@ public class playgamecontroller : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;   
+        instance = this;
+        DontDestroyOnLoad(instance);
     }
     void Start()
     {
@@ -31,16 +32,19 @@ public class playgamecontroller : MonoBehaviour
     }
     public static void posttoleaderboard(int score)
     {
-
-        Social.ReportScore(score, GPGSIds.leaderboard_highscore,(bool success)=>
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
         {
+            Social.ReportScore(score, GPGSIds.leaderboard_highscore, (bool success) =>
+            {
 
-        });
+            });
+        }
+        
     }
 
     public  void showleaderboardUI()
     {
-            PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_highscore);
+            PlayGamesPlatform.Instance.ShowLeaderboardUI();
 
     }
 

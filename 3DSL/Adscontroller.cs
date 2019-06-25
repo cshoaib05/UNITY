@@ -1,6 +1,5 @@
 ﻿using UnityEngine.Advertisements;
 using UnityEngine;
-
 public class Adscontroller : MonoBehaviour
 {
     private string gameid;
@@ -18,7 +17,7 @@ public class Adscontroller : MonoBehaviour
         countads++;
         if(Advertisement.IsReady("video") && countads%3==0)
         {
-            Advertisement.Show();
+           // Advertisement.Show();
         }
 
     }

@@ -16,8 +16,17 @@ public class SceneManagement : MonoBehaviour
     public static bool classic;
     public static bool dash;
     public GameObject pausebttn;
+
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
+    }
+
     private void Start()
     {
+        
         audioManager = FindObjectOfType<AudioManager>();
         statstext[0].text = PlayerPrefs.GetInt("highscore").ToString();
         statstext[1].text = PlayerPrefs.GetInt("streaks").ToString();
@@ -42,24 +51,25 @@ public class SceneManagement : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        Application.targetFrameRate = 60;
-        QualitySettings.vSyncCount = 0;
-    }
+
 
 
     public void Loadthescene(int name)
     {
-        
+        obscollider.isalive = true;   
         audioManager.Play("click");
         Time.timeScale = 1;
         Nearmiss.neaarmisscount = 0;
         //SceneManager.LoadScene(name);
         StartCoroutine(asloadasync(name));
-        //        SceneManager.LoadSceneAsync(name);
+        // SceneManager.LoadSceneAsync(name);
     } 
     
+
+    public void Rateus()
+    {
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.wancstudios.streaks");
+    }
 
     public void pause()
     {
@@ -86,29 +96,32 @@ public class SceneManagement : MonoBehaviour
     public void loadclassic()
     {
         audioManager.Play("click");
-        Loadthescene(1);
         timeattack = false;
         dash = false;
         classic = true;
+        Loadthescene(1);
+
     }
  
     public void loadtimeattack()
     {
         audioManager.Play("click");
-        Loadthescene(1);
         timeattack = true;
         classic = false;
         dash = false;
+        Loadthescene(1);
+       
      }
 
     public void loaddash()
     {
         audioManager.Play("click");
-        Loadthescene(1);
         obscollider.outcount = 0;
         timeattack = false;
         classic = false;
         dash = true;
+        Loadthescene(1);
+       
     }
 
 

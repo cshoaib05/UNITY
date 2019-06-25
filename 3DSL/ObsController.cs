@@ -39,8 +39,8 @@ public class ObsController : MonoBehaviour
     {
         Vector3 temppos;
         if(Score.inst.score <100  ) { rankey = Random.Range(1, 10); }
-        if(Score.inst.score <500 && Score.inst.score >100) { rankey = Random.Range(1, 14); }
-        if(Score.inst.score >500 || SceneManagement.dash) { rankey = Random.Range(1, objPrefab.Count + 1); }
+        if(Score.inst.score <300 && Score.inst.score >100) { rankey = Random.Range(1, 14); }
+        if(Score.inst.score >300 || SceneManagement.dash) { rankey = Random.Range(1, objPrefab.Count + 1); }
 
         GameObject go = objDict[rankey].Dequeue();
         go.SetActive(true);

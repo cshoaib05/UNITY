@@ -19,6 +19,7 @@ public class Animationcontroller : MonoBehaviour
     public TextMeshProUGUI statstimeattack;
     public TextMeshProUGUI stasdash;
     public AudioManager audioManager;
+
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();

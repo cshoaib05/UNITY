@@ -5,7 +5,6 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     public static Score inst;
-    
     public TextMeshProUGUI scoretext;
     public static float timer;
     public TextMeshProUGUI scorepaneltext;
@@ -20,6 +19,8 @@ public class Score : MonoBehaviour
 
     public void Awake()
     {
+     
+
         if(!SceneManagement.dash)
         {
             timer = 60.00f;

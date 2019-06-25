@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class playermov : MonoBehaviour
 {
+    public TextMeshProUGUI taptext;
     public GameObject nearmissobj;
     private Vector3 pos;
     float  t = 0f;
@@ -9,8 +11,12 @@ public class playermov : MonoBehaviour
     public ParticleSystem streakeffect;
     public float streaktime;
     private bool isended;
+    bool white;
+    Color color= new Color(0,0,0,0.02f);
+
     void Start()
     {
+        white = true;
         isended = false;
         streaktime = 0f;
         pos = transform.position;
@@ -19,8 +25,26 @@ public class playermov : MonoBehaviour
 
     void Update()
     {
+        if(taptext.enabled && white )
+        {
+            taptext.color = taptext.color - color;
+            if(taptext.color.a<=0)
+            {
+                white = false;
+            }
+        }
 
-        if( Nearmiss.nearmiss==true)
+        if (taptext.enabled && !white)
+        {
+            taptext.color = taptext.color + color;
+            if (taptext.color.a >= 1)
+            {
+                white = true;
+            }
+        }
+
+
+        if ( Nearmiss.nearmiss==true)
         {
             nearmissobj.SetActive(false);
         }
@@ -31,6 +55,7 @@ public class playermov : MonoBehaviour
         if (touchcountpress > 0 )
         {
             touchcountpress = 1;
+            taptext.enabled = false;
         }
 
         if (touchcountpress == 1  && obscollider.isalive)

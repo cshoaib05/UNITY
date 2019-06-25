@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        music = PlayerPrefs.GetInt("music");
+        music = PlayerPrefs.GetInt("music",1);
 
         foreach (Sound s in sound)
         {
